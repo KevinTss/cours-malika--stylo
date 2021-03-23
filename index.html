@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylo manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>Stylo manager</h1>
+
+    <script>
+      function showStock(stock) {
+        let content = "";
+        for (const pen of stock) {
+          content += `
+            ${pen.brand} - ${pen.color} - ${pen.type} - ${pen.isNew} - ${pen.fillRate}%
+          `;
+        }
+        return content;
+      }
+
+      class Stylo {
+        brand = null;
+        color = null;
+        type = null;
+        isNew = null;
+        fillRate = null;
+
+        constructor(brand, color, type, isNew, fillRate) {
+          this.brand = brand;
+          this.color = color;
+          this.type = type;
+          this.isNew = isNew;
+          this.fillRate = fillRate;
+        }
+      }
+
+      const stock = [];
+
+      for (let i = 0; i < 5; i++) {
+        const penBrand = prompt(`Entrez la marque du stylo ${i + 1}`);
+        const penColor = prompt(`Entrez la couleur du stylo ${i + 1}`);
+        const penType = prompt(`Entrez le type du stylo ${i + 1}`);
+        const penIsNew = prompt(`Le stylo est-il neuf ? ${i + 1}`);
+        const penFillRate = prompt(
+          `Entrez le pourcentage de remplissage ${i + 1}`
+        );
+
+        const stylo = new Stylo(
+          penBrand,
+          penColor,
+          penType,
+          penIsNew,
+          penFillRate
+        );
+        stock.push(stylo);
+      }
+
+      /*
+        Afficher le nombre de stylos stockés
+      */
+
+      alert(`Il y a ${stock.length} stylo sotcké`);
+
+      /*
+        Afficher le stock initial
+      */
+
+      alert(`Etat du stock
+        ${showStock(stock)}
+      `);
+
+      /*
+        Supprimer le mont blanc
+      */
+      stock.pop();
+
+      /*
+        Afficher le nouveau nombre de stylos stockés
+      */
+
+      alert(`Il y a ${stock.length} stylo sotcké`);
+
+      /*
+        Afficher le nouveau nombre de stylos stockés
+      */
+
+      alert(`Etat du stock
+        ${showStock(stock)}
+      `);
+
+      /*
+        Insérer un nouveau stylo au début de la liste
+      */
+
+      const stylo = new Stylo("Mabille", "marron", "plume", "Non", "0");
+      stock.unshift(stylo);
+
+      /*
+        Afficher le nouveau nombre de stylos stockés
+      */
+
+      alert(`Il y a ${stock.length} stylo sotcké`);
+
+      /*
+        Afficher le nouveau nombre de stylos stockés
+      */
+
+      alert(`Etat du stock
+        ${showStock(stock)}
+      `);
+    </script>
+  </body>
+</html>
